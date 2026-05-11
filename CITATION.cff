@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you use StarNet-Pose in your research, please cite the following paper."
+authors:
+  - given-names: Li
+    family-names: Pan
+    affiliation: ""
+    orcid: ""
+title: "StarNet-Pose: Heatmap-Free Lightweight Pose Estimation via Multiplicative Feature Interaction and Occlusion-Aware Training"
+journal: "Neurocomputing"
+year: 2025
+url: "https://github.com/lechan775/starnet-pose"
+repository-code: "https://github.com/lechan775/starnet-pose"
+license: Apache-2.0
+
+preferred-citation:
+  type: article
+  authors:
+    - given-names: Li
+      family-names: Pan
+  title: "StarNet-Pose: Heatmap-Free Lightweight Pose Estimation via Multiplicative Feature Interaction and Occlusion-Aware Training"
+  journal: "Neurocomputing"
+  year: 2025
+
+references:
+  - type: article
+    title: "Rewrite the Stars"
+    authors:
+      - given-names: Xu
+        family-names: Ma
+    journal: "CVPR"
+    year: 2024
+    url: "https://arxiv.org/abs/2403.19967"
+  - type: article
+    title: "Coordinate Attention for Efficient Mobile Network Design"
+    authors:
+      - given-names: Qibin
+        family-names: Hou
+    journal: "CVPR"
+    year: 2021
+    url: "https://arxiv.org/abs/2103.02907"
+  - type: software
+    title: "OpenMMLab Pose Estimation Toolbox and Benchmark"
+    authors:
+      - name: "MMPose Contributors"
+    year: 2020
+    url: "https://github.com/open-mmlab/mmpose"

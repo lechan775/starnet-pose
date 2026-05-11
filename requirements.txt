@@ -1,0 +1,20 @@
+# Core Dependencies for StarNet-Pose
+# Built upon MMPose (https://github.com/open-mmlab/mmpose)
+# Requires Python >= 3.8, PyTorch >= 1.8
+
+torch>=1.8.0
+torchvision>=0.9.0
+mmcv>=2.0.0
+mmengine>=0.8.0
+mmpose>=1.3.0
+mmdet>=3.0.0          # Optional: for detection-based top-down pipeline
+timm>=0.4.12           # Optional: for DropPath
+opencv-python>=4.5.0
+numpy>=1.21.0
+xtcocotools>=1.14.0    # For COCO evaluation metrics
+pycocotools>=2.0.0
+tensorboardX>=2.6.0    # For training visualization
+
+# Experiment & visualization
+matplotlib>=3.5.0
+seaborn>=0.12.0

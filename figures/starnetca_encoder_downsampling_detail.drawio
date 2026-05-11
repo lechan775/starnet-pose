@@ -1,0 +1,258 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram id="starnetca-encoder-detail" name="StarNetCA-Encoder-Detail">
+    <mxGraphModel dx="1665" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontFamily=Arial;fontColor=#111111;" value="StarNetCA S3 Encoder Downsampling Detail" vertex="1">
+          <mxGeometry x="700" y="20" width="1000" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontFamily=Arial;fontColor=#444444;" value="Backbone only. This page shows the downsampling encoder path inside StarNetCA, not the RTMCC head." vertex="1">
+          <mxGeometry x="560" y="56" width="1280" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="top_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Key point&lt;/b&gt;&lt;br/&gt;Inside the backbone there is only progressive downsampling: /2 -&amp;gt; /4 -&amp;gt; /8 -&amp;gt; /16 -&amp;gt; /32.&lt;br/&gt;No neck, no FPN, no upsampling, no pyramid fusion." vertex="1">
+          <mxGeometry x="760" y="90" width="880" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#c9ccd1;strokeWidth=1.5;arcSize=10;" value="" vertex="1">
+          <mxGeometry x="60" y="190" width="2280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontFamily=Arial;fontColor=#222222;" value="1. Encoder path and cumulative stride" vertex="1">
+          <mxGeometry x="90" y="205" width="420" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="input" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Input Crop&lt;/b&gt;&lt;br/&gt;3 x 256 x 192&lt;br/&gt;stride 1" vertex="1">
+          <mxGeometry x="90" y="275" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="stem" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Stem&lt;/b&gt;&lt;br/&gt;ConvBN 3x3, s=2&lt;br/&gt;3 -&amp;gt; 32 ch&lt;br/&gt;32 x 128 x 96" vertex="1">
+          <mxGeometry x="300" y="265" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="stage0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b7e1cd;strokeColor=#6aa84f;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Stage 0&lt;/b&gt;&lt;br/&gt;Downsample: ConvBN 3x3, s=2&lt;br/&gt;32 -&amp;gt; 32 ch&lt;br/&gt;2 x StarBlock&lt;br/&gt;32 x 64 x 48" vertex="1">
+          <mxGeometry x="550" y="255" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="stage1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b7e1cd;strokeColor=#6aa84f;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Stage 1&lt;/b&gt;&lt;br/&gt;Downsample: ConvBN 3x3, s=2&lt;br/&gt;32 -&amp;gt; 64 ch&lt;br/&gt;2 x StarBlock&lt;br/&gt;64 x 32 x 24" vertex="1">
+          <mxGeometry x="840" y="255" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="stage2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#93c47d;strokeColor=#38761d;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Stage 2&lt;/b&gt;&lt;br/&gt;Downsample: ConvBN 3x3, s=2&lt;br/&gt;64 -&amp;gt; 128 ch&lt;br/&gt;8 x CAStarBlock&lt;br/&gt;128 x 16 x 12" vertex="1">
+          <mxGeometry x="1130" y="245" width="240" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="stage3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6aa84f;strokeColor=#274e13;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;fontColor=#ffffff;" value="&lt;b&gt;Stage 3&lt;/b&gt;&lt;br/&gt;Downsample: ConvBN 3x3, s=2&lt;br/&gt;128 -&amp;gt; 256 ch&lt;br/&gt;4 x CAStarBlock&lt;br/&gt;256 x 8 x 6" vertex="1">
+          <mxGeometry x="1450" y="245" width="240" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="out" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;strokeWidth=2;arcSize=12;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Backbone Output&lt;/b&gt;&lt;br/&gt;out_indices = (3,)&lt;br/&gt;Only Stage 3 is exported&lt;br/&gt;256 x 8 x 6" vertex="1">
+          <mxGeometry x="1760" y="265" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="head_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Sent to RTMCCHead later.&lt;br/&gt;The head does coordinate classification; it does not add an upsampling decoder to the backbone." vertex="1">
+          <mxGeometry x="2040" y="270" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="input" target="stem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="stem" target="stage0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="stage0" target="stage1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="stage1" target="stage2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="stage2" target="stage3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="stage3" target="out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="out" target="head_note" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stage_template_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#c9ccd1;strokeWidth=1.5;arcSize=10;" value="" vertex="1">
+          <mxGeometry x="60" y="450" width="1060" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="stage_template_title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontFamily=Arial;fontColor=#222222;" value="2. What happens inside each stage" vertex="1">
+          <mxGeometry x="90" y="465" width="420" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="template_in" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Stage input&lt;/b&gt;&lt;br/&gt;C_in x H x W" vertex="1">
+          <mxGeometry x="110" y="560" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="template_down" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;DownSampler&lt;/b&gt;&lt;br/&gt;ConvBN 3x3, s=2&lt;br/&gt;changes resolution and channels" vertex="1">
+          <mxGeometry x="330" y="545" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="template_blocks" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Repeat blocks N times&lt;/b&gt;&lt;br/&gt;StarBlock or CAStarBlock&lt;br/&gt;stride = 1 inside every block&lt;br/&gt;spatial size stays fixed" vertex="1">
+          <mxGeometry x="650" y="545" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="template_out" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="&lt;b&gt;Stage output&lt;/b&gt;&lt;br/&gt;C_out x H/2 x W/2" vertex="1">
+          <mxGeometry x="980" y="560" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="template_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Only the first ConvBN inside a stage performs downsampling.&lt;br/&gt;The repeated StarBlock / CAStarBlock stack only transforms features and keeps the same H x W." vertex="1">
+          <mxGeometry x="140" y="650" width="900" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="te1" edge="1" parent="1" source="template_in" target="template_down" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="te2" edge="1" parent="1" source="template_down" target="template_blocks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="te3" edge="1" parent="1" source="template_blocks" target="template_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="summary_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#c9ccd1;strokeWidth=1.5;arcSize=10;" value="" vertex="1">
+          <mxGeometry x="1160" y="450" width="1180" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="summary_title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontFamily=Arial;fontColor=#222222;" value="3. S3-specific settings that matter for the encoder drawing" vertex="1">
+          <mxGeometry x="1190" y="465" width="680" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="summary_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=13;align=left;spacingLeft=14;" value="&lt;b&gt;Architecture&lt;/b&gt;&lt;br/&gt;base_dim = 32&lt;br/&gt;depths = [2, 2, 8, 4]&lt;br/&gt;out_indices = (3,)&lt;br/&gt;ca_stages = [2, 3]&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Per-stage output shapes for 256 x 192 input&lt;/b&gt;&lt;br/&gt;Stem: 32 x 128 x 96&lt;br/&gt;Stage 0: 32 x 64 x 48&lt;br/&gt;Stage 1: 64 x 32 x 24&lt;br/&gt;Stage 2: 128 x 16 x 12&lt;br/&gt;Stage 3: 256 x 8 x 6" vertex="1">
+          <mxGeometry x="1190" y="520" width="480" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="summary_box2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=13;align=left;spacingLeft=14;" value="&lt;b&gt;How to read the backbone correctly&lt;/b&gt;&lt;br/&gt;1. It is a hierarchical encoder, not a decoder.&lt;br/&gt;2. Resolution decreases stage by stage.&lt;br/&gt;3. Coordinate Attention in Stage 2 and Stage 3 does not change shape.&lt;br/&gt;4. Because only Stage 3 is exported, the head receives a single low-resolution feature map." vertex="1">
+          <mxGeometry x="1730" y="520" width="580" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="star_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#c9ccd1;strokeWidth=1.5;arcSize=10;" value="" vertex="1">
+          <mxGeometry x="60" y="770" width="1080" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="star_title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontFamily=Arial;fontColor=#222222;" value="4. StarBlock internals (used in Stage 0 and Stage 1)" vertex="1">
+          <mxGeometry x="90" y="785" width="600" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="s_in" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Input x" vertex="1">
+          <mxGeometry x="100" y="1010" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s_dw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="DWConv 7x7&lt;br/&gt;+ BN" vertex="1">
+          <mxGeometry x="250" y="1000" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s_b1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="f1: Conv 1x1&lt;br/&gt;+ ReLU6" vertex="1">
+          <mxGeometry x="430" y="890" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s_b2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="f2: Conv 1x1" vertex="1">
+          <mxGeometry x="430" y="1110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s_mul" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontFamily=Arial;fontSize=22;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry x="650" y="1010" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s_g" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="g: Conv 1x1&lt;br/&gt;+ BN" vertex="1">
+          <mxGeometry x="760" y="1000" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s_dw2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="DWConv 7x7" vertex="1">
+          <mxGeometry x="930" y="1000" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s_add" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontFamily=Arial;fontSize=22;fontStyle=1;" value="+" vertex="1">
+          <mxGeometry x="1030" y="1110" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s_out" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Output" vertex="1">
+          <mxGeometry x="970" y="1210" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="star_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Inside the block there is no spatial downsampling. All convolutions use stride 1. The residual connection is preserved." vertex="1">
+          <mxGeometry x="110" y="840" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="se1" edge="1" parent="1" source="s_in" target="s_dw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se2" edge="1" parent="1" source="s_dw" target="s_b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se3" edge="1" parent="1" source="s_dw" target="s_b2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se4" edge="1" parent="1" source="s_b1" target="s_mul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se5" edge="1" parent="1" source="s_b2" target="s_mul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se6" edge="1" parent="1" source="s_mul" target="s_g" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se7" edge="1" parent="1" source="s_g" target="s_dw2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se8" edge="1" parent="1" source="s_dw2" target="s_add" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se9" edge="1" parent="1" source="s_in" target="s_add" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#b85450;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se10" edge="1" parent="1" source="s_add" target="s_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ca_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#c9ccd1;strokeWidth=1.5;arcSize=10;" value="" vertex="1">
+          <mxGeometry x="1180" y="770" width="1160" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="ca_title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontFamily=Arial;fontColor=#222222;" value="5. CAStarBlock internals (used in Stage 2 and Stage 3)" vertex="1">
+          <mxGeometry x="1210" y="785" width="620" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c_in" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Input x" vertex="1">
+          <mxGeometry x="1230" y="1010" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c_dw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="DWConv 7x7&lt;br/&gt;+ BN" vertex="1">
+          <mxGeometry x="1380" y="1000" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c_b1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="f1: Conv 1x1&lt;br/&gt;+ ReLU6" vertex="1">
+          <mxGeometry x="1560" y="890" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c_b2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="f2: Conv 1x1" vertex="1">
+          <mxGeometry x="1560" y="1110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c_mul" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontFamily=Arial;fontSize=22;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry x="1780" y="1010" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c_g" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="g: Conv 1x1&lt;br/&gt;+ BN" vertex="1">
+          <mxGeometry x="1890" y="1000" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ca" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;strokeWidth=2;arcSize=10;fontFamily=Arial;fontSize=12;" value="Coordinate&lt;br/&gt;Attention" vertex="1">
+          <mxGeometry x="2050" y="995" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_dw2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="DWConv 7x7" vertex="1">
+          <mxGeometry x="2210" y="1000" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c_add" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontFamily=Arial;fontSize=22;fontStyle=1;" value="+" vertex="1">
+          <mxGeometry x="2250" y="1110" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c_out" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="Output" vertex="1">
+          <mxGeometry x="2210" y="1210" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ca_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;arcSize=10;fontFamily=Arial;fontSize=12;" value="CA is inserted after the g 1x1 projection and before the second depth-wise convolution.&lt;br/&gt;It enhances features, but it still keeps the same spatial resolution." vertex="1">
+          <mxGeometry x="1240" y="840" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ce1" edge="1" parent="1" source="c_in" target="c_dw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce2" edge="1" parent="1" source="c_dw" target="c_b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce3" edge="1" parent="1" source="c_dw" target="c_b2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce4" edge="1" parent="1" source="c_b1" target="c_mul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce5" edge="1" parent="1" source="c_b2" target="c_mul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce6" edge="1" parent="1" source="c_mul" target="c_g" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce7" edge="1" parent="1" source="c_g" target="c_ca" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce8" edge="1" parent="1" source="c_ca" target="c_dw2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce9" edge="1" parent="1" source="c_dw2" target="c_add" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce10" edge="1" parent="1" source="c_in" target="c_add" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#b85450;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce11" edge="1" parent="1" source="c_add" target="c_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
