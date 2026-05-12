@@ -338,7 +338,7 @@ If you use StarNet-Pose in your research, please cite:
              Multiplicative Feature Interaction and Occlusion-Aware Training},
   author  = {Zheng Luo and Guowei Jiang and Runhang Pan and Qi Qi and Xin Xie and Siyuan Chen},
   journal = {Neurocomputing},
-  year    = {2025},
+  year    = {2026},
   url     = {https://github.com/lechan775/starnet-pose}
 }
 ```
