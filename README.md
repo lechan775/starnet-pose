@@ -336,7 +336,7 @@ If you use StarNet-Pose in your research, please cite:
 @article{pan2025starnetpose,
   title   = {StarNet-Pose: Heatmap-Free Lightweight Pose Estimation via
              Multiplicative Feature Interaction and Occlusion-Aware Training},
-  author  = {Pan, Li},
+  author  = {Zheng Luo and Guowei Jiang and Runhang Pan and Qi Qi and Xin Xie and Siyuan Chen},
   journal = {Neurocomputing},
   year    = {2025},
   url     = {https://github.com/lechan775/starnet-pose}
