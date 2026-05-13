@@ -1,10 +1,20 @@
 cff-version: 1.2.0
 message: "If you use StarNet-Pose in your research, please cite the following paper."
 authors:
-  - given-names: Li
+  - given-names: Zheng
+    family-names: Luo
+    affiliation: "Shenyang Sport University"
+  - given-names: Guowei
+    family-names: Jiang
+    affiliation: "Hunan Institute of Science and Technology"
+  - given-names: Runhang
     family-names: Pan
-    affiliation: ""
-    orcid: ""
+  - given-names: Qi
+    family-names: Qi
+  - given-names: Xin
+    family-names: Xie
+  - given-names: Siyuan
+    family-names: Chen
 title: "StarNet-Pose: Heatmap-Free Lightweight Pose Estimation via Multiplicative Feature Interaction and Occlusion-Aware Training"
 journal: "Neurocomputing"
 year: 2025
@@ -15,8 +25,18 @@ license: Apache-2.0
 preferred-citation:
   type: article
   authors:
-    - given-names: Li
+    - given-names: Zheng
+      family-names: Luo
+    - given-names: Guowei
+      family-names: Jiang
+    - given-names: Runhang
       family-names: Pan
+    - given-names: Qi
+      family-names: Qi
+    - given-names: Xin
+      family-names: Xie
+    - given-names: Siyuan
+      family-names: Chen
   title: "StarNet-Pose: Heatmap-Free Lightweight Pose Estimation via Multiplicative Feature Interaction and Occlusion-Aware Training"
   journal: "Neurocomputing"
   year: 2025
