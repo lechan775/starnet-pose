@@ -3,13 +3,12 @@
   <h3>Heatmap-Free Lightweight Pose Estimation via Multiplicative Feature Interaction and Occlusion-Aware Training</h3>
 
   <p>
-    <a href="https://arxiv.org/abs/2403.19967"><img src="https://img.shields.io/badge/Backbone-StarNet-blue" alt="StarNet"></a>
-    <a href="https://arxiv.org/abs/2103.02907"><img src="https://img.shields.io/badge/Module-Coordinate%20Attention-green" alt="Coordinate Attention"></a>
-    <a href="https://github.com/open-mmlab/mmpose"><img src="https://img.shields.io/badge/Built_on-MMPose-orange" alt="MMPose"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-darkgreen" alt="License"></a>
-    <a href="https://www.sciencedirect.com/journal/neurocomputing"><img src="https://img.shields.io/badge/Journal-Neurocomputing-red" alt="Neurocomputing"></a>
-    <br>
-    <a href="https://github.com/lechan775/starnet-pose"><img src="https://img.shields.io/github/stars/lechan775/starnet-pose?style=social" alt="GitHub stars"></a>
+    <a href="https://arxiv.org/abs/2403.19967"><img src="https://img.shields.io/badge/Backbone-StarNet-007ec6?style=flat&logoColor=white" alt="StarNet"></a>
+    <a href="https://arxiv.org/abs/2103.02907"><img src="https://img.shields.io/badge/Module-CA-34d058?style=flat" alt="Coordinate Attention"></a>
+    <a href="https://github.com/open-mmlab/mmpose"><img src="https://img.shields.io/badge/Built_on-MMPose-ed6f00?style=flat" alt="MMPose"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-2f9f44?style=flat" alt="License"></a>
+    <a href="https://www.sciencedirect.com/journal/neurocomputing"><img src="https://img.shields.io/badge/Journal-Neurocomputing-c62929?style=flat" alt="Neurocomputing"></a>
+    <a href="https://github.com/lechan775/starnet-pose"><img src="https://img.shields.io/github/stars/lechan775/starnet-pose?style=flat&color=f1e05a" alt="GitHub stars"></a>
   </p>
 
   <p>
